@@ -6,17 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: |
-          output=$(lsof -i:4201 | grep LISTEN) 
-          echo 'first'
-          n=${#output}
-          echo ${output}
-          echo ${n}
-          echo 'Hello'
-          if [ "$output" != "Hello from root" ]; then
-            echo "No response from http://localhost:4201/api/users" 
-            exit 1
-          fi
+        run: docker-compose up -d
+         
         
 #       - name: Install node
 #         uses: actions/setup-node@v1
@@ -26,8 +17,8 @@ jobs:
 #       - name: Install dependencies
 #         run: npm install
 
-#       - name: Test
-        
+      - name: Test
+        run: curl --connect-timeout 300 http://localhost:4201/api/users
           
       - name: Stop containers
         if: always()
