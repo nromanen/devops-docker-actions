@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: |
-          docker-compose up -d && output=$(curl --connect-timeout 300 -X POST http://localhost:4201/api/user -H 'Content-Type: application/json' -d '{"user":{"firstName":"user One","lastName":"user One","email":"user1@gmail.com"}}' 2>/dev/null) 
+          docker-compose up -d && sleep 100 && output=$(lsof -i:4201 | grep LISTEN) 
           echo ${output}
           if [ "$output" != "Hello from root" ]; then
             echo "No response from http://localhost:4201/api/users" 
