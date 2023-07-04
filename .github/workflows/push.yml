@@ -18,7 +18,7 @@ jobs:
 #         run: npm install
 
       - name: Test
-        run: curl --connect-timeout 300 http://localhost:4201/api/users
+        run: curl --connect-timeout 300 http://localhost:4202/api/users
           
       - name: Stop containers
         if: always()
