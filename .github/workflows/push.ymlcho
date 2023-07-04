@@ -11,6 +11,7 @@ jobs:
           n=${#output}
           echo ${output}
           echo ${n}
+          echo 'Hello'
           if [ "$output" != "Hello from root" ]; then
             echo "No response from http://localhost:4201/api/users" 
             exit 1
