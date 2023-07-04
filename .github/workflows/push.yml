@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: |
-          docker-compose up -d && sleep 100 && output=$(lsof -i:4201 | grep LISTEN) 
+          output=$(lsof -i:4201 | grep LISTEN) 
           echo ${output}
           if [ "$output" != "Hello from root" ]; then
             echo "No response from http://localhost:4201/api/users" 
