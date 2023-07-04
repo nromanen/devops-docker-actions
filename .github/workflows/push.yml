@@ -7,10 +7,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: |
-          ocker-compose up -d && output=$(docker run --network container:app appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/)
+          ocker-compose up -d && sleep 50 && output=$(docker run --network container:app appropriate/curl -s --retry 10 --retry-connrefused http://localhost:4201/api/users)
           echo ${output}
           if [ "$output" != "Hello from root" ]; then
-            echo "No response from http://localhost:5000" 
+            echo "No response from http://localhost:4201/api/users" 
             exit 1
           fi
         
