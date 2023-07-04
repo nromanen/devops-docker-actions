@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: |
-          output=$(curl http://localhost:4201/api/users)
+          docker-compose up -d && sleep 5 && output=$(curl http://localhost:4201/api/users)
           echo ${output}
           if [ "$output" != "Hello from root" ]; then
             echo "No response from http://localhost:4201/api/users" 
