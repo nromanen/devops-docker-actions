@@ -8,7 +8,9 @@ jobs:
       - name: Build the stack
         run: |
           output=$(lsof -i:4201 | grep LISTEN) 
+          n=${#output}
           echo ${output}
+          echo ${n}
           if [ "$output" != "Hello from root" ]; then
             echo "No response from http://localhost:4201/api/users" 
             exit 1
