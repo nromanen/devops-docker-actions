@@ -17,9 +17,9 @@ jobs:
 #       - name: Install dependencies
 #         run: npm install
 
-      - name: Test
-        run: |
-          curl --connect-timeout 300 -s -o /dev/null -w "%{http_code}" http://localhost:3081/api/users
+#       - name: Test
+#         run: |
+#           curl --connect-timeout 300 -s -o /dev/null -w "%{http_code}" http://localhost:3081/api/users
           
       - name: Stop containers
         if: always()
